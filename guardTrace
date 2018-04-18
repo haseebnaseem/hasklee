@@ -1,0 +1,24 @@
+import System.Environment
+import Debug.Trace
+
+bmiTell bmi
+    | bmi < 10 && 20<=18.5= trace ("(bmi<10),(20<=18.5)") 8.5
+    | bmi > 20 && 40<=18.5= trace ("NOT(bmi<10),NOT(20<=18.5),(bmi>20),(40<=18.5)") 8.5
+    |bmi<=18.5= trace ("NOT(bmi<10),NOT(20<=18.5),NOT(bmi>20),NOT(40<=18.5),(bmi<=18.5)") 8.5
+    | bmi < 10 && 20<=25.0= trace ("NOT(bmi<10),NOT(20<=18.5),NOT(bmi>20),NOT(40<=18.5),NOT(bmi<=18.5),(bmi<10),(20<=25.0)") 5.0
+    | bmi > 20 && 40<=25.0= trace ("NOT(bmi<10),NOT(20<=18.5),NOT(bmi>20),NOT(40<=18.5),NOT(bmi<=18.5),NOT(bmi<10),NOT(20<=25.0),(bmi>20),(40<=25.0)") 5.0
+    |bmi<=25.0= trace ("NOT(bmi<10),NOT(20<=18.5),NOT(bmi>20),NOT(40<=18.5),NOT(bmi<=18.5),NOT(bmi<10),NOT(20<=25.0),NOT(bmi>20),NOT(40<=25.0),(bmi<=25.0)") 5.0
+    | bmi < 10 && 20<=30.0= trace ("NOT(bmi<10),NOT(20<=18.5),NOT(bmi>20),NOT(40<=18.5),NOT(bmi<=18.5),NOT(bmi<10),NOT(20<=25.0),NOT(bmi>20),NOT(40<=25.0),NOT(bmi<=25.0),(bmi<10),(20<=30.0)") 0.0
+    | bmi > 20 && 40<=30.0= trace ("NOT(bmi<10),NOT(20<=18.5),NOT(bmi>20),NOT(40<=18.5),NOT(bmi<=18.5),NOT(bmi<10),NOT(20<=25.0),NOT(bmi>20),NOT(40<=25.0),NOT(bmi<=25.0),NOT(bmi<10),NOT(20<=30.0),(bmi>20),(40<=30.0)") 0.0
+    |bmi<=30.0= trace ("NOT(bmi<10),NOT(20<=18.5),NOT(bmi>20),NOT(40<=18.5),NOT(bmi<=18.5),NOT(bmi<10),NOT(20<=25.0),NOT(bmi>20),NOT(40<=25.0),NOT(bmi<=25.0),NOT(bmi<10),NOT(20<=30.0),NOT(bmi>20),NOT(40<=30.0),(bmi<=30.0)") 0.0
+    | otherwise = trace ("NOT(bmi<10),NOT(20<=18.5),NOT(bmi>20),NOT(40<=18.5),NOT(bmi<=18.5),NOT(bmi<10),NOT(20<=25.0),NOT(bmi>20),NOT(40<=25.0),NOT(bmi<=25.0),NOT(bmi<10),NOT(20<=30.0),NOT(bmi>20),NOT(40<=30.0),NOT(bmi<=30.0),(bmi==VAR)") 58.0
+
+g x
+    | x < 10 = trace ("(x<10)") 20
+    | x > 20 = trace ("NOT(x<10),(x>20)") 40
+    | otherwise = trace ("NOT(x<10),NOT(x>20),(bmi==VAR)") x
+main = do
+    minput1 <- getArgs
+    let input1 = head minput1
+    let instrxx3567 = (read input1)
+    print (bmiTell instrxx3567)
