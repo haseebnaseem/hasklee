@@ -11,10 +11,11 @@ g x
     | f x < 10 = 20
     | f x > 20 = 40
     | otherwise = x
-f y
-    | y < 5 = 25
-    | y < 8 = 45
-    | otherwise = y*2
+
+f x 
+    | x >100 = 1
+    | otherwise = x
+
 
 main = do
     minput1 <- getArgs
